@@ -1,0 +1,35 @@
+﻿# DivingDeep
+
+Welcome to the DivingDeep competition! This starting kit will help you generate a simple baseline model based on persistence and evaluate your own predictions of the SSTA.
+
+# Files
+
+Inside this starting kit, you will find the following scripts:
+
+- **baseline_model.py** - Creates the baseline model.
+- **evaluation.py** - Evaluates your predictions.
+
+There are also the following folders:
+
+- **data** - Contains input and output training SSTA data, input for phase one testing, coordinates, and additional features such as SST, 2-meter air temperature, and mean sea level pressure. Download the released **data_phase_one.zip** from the competition's page, and put all CSV files in this folder.
+- **out** - Contains results of running the scripts.
+
+## Create Baseline: baseline_model.py
+
+This script creates a baseline for both training data and test data. The baseline is based on the ***persistence*** model. Here, ***persistence*** means using the current month value of SSTA to predict SSTA three months ahead.
+
+The script generates a ***persistence*** model based on the SSTA data in the **data** folder. It saves two files in the **out** folder:
+
+- **training_output_pred_persist.csv** - Baseline based on the training data.
+- **test_output_pred_persist_phase_one.csv** - Baseline based on test data.
+
+## Evaluation: evaluation.py
+
+This script allows you to quickly compare the RMSE values between your model and the baseline file. By default, it uses the following files:
+
+- **data/training_output.csv** - Currently contains ground truth values for training. Please replace this with the path to the results of your model.
+- **out/training_output_pred_persist.csv** - Currently contains results of the baseline model for the training set.
+
+## Submit Your Predictions
+
+After training your model, input the test data and generate predictions. Save your predictions in a CSV file named **predictions.csv** and zip it. Your **predictions.csv** should have **exactly 71 rows and 5774 columns** without column names or row indices (matching **test_output_pred_persist_phase_one.csv**). Upload this ZIP file to Codabench under **My Submissions** on the competition's page. Wait for a few minutes to get a score. If you are satisfied with the score, click **On the Leaderboard** under **Actions** and share it.
